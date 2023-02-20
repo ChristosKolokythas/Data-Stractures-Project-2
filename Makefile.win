@@ -1,0 +1,34 @@
+# Project: Menu
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o Menu.o extra.o
+LINKOBJ  = main.o Menu.o extra.o
+LIBS     = -L"E:/installetion files/appdata/Dev-Cpp/MinGW64/lib" -L"E:/installetion files/appdata/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -pg -g3
+INCS     = -I"E:/installetion files/appdata/Dev-Cpp/MinGW64/include" -I"E:/installetion files/appdata/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/installetion files/appdata/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"E:/installetion files/appdata/Dev-Cpp/MinGW64/include" -I"E:/installetion files/appdata/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"E:/installetion files/appdata/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"E:/installetion files/appdata/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = Menu.exe
+CXXFLAGS = $(CXXINCS) -pg -g3
+CFLAGS   = $(INCS) -pg -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+Menu.o: Menu.c
+	$(CC) -c Menu.c -o Menu.o $(CFLAGS)
+
+extra.o: extra.c
+	$(CC) -c extra.c -o extra.o $(CFLAGS)
